@@ -3,60 +3,644 @@
 <head>
   <meta charset="UTF-8">
   <title>S Guhan Raj | Portfolio</title>
+  <link rel="icon" type="image/png" href="logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
   <style>
+    /* ---------- Base Styles ---------- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: image-set("https://static.vecteezy.com/system/resources/previews/013/087/516/non_2x/diagonal-golden-line-glass-cube-on-black-background-illustration-of-website-banner-poster-sign-corporate-business-social-media-post-billboard-agency-advertising-media-motion-video-animation-wave-vector.jpg");
-  color: rgb(255, 255, 255);
-  text-align: center;
-}
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.hero h1 {
-  font-size: 3rem;
-  margin: 0;
-}
-.hero-buttons {
-  margin-top: 30px;
-}
-.btn {
-  display: inline-block;
-  padding: 12px 20px;
-  margin: 10px;
-  background: #d4ff00;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 30px;
-}
-.btn:hover {
-  background: #81990a;
-}
+      font-family: 'Segoe UI', sans-serif;
+      color: #1a1a1a;
+      background: #f8f9fb;
+      overflow-x: hidden;
+    }
+    section {
+      padding: 100px 10%;
+      min-height: 100vh;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+    }
+    section.visible {
+      opacity: 1;
+      transform: none;
+    }
 
+    /* ---------- Navigation ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 8%;
+      z-index: 1000;
+    }
+    nav h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a237e;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 600;
+      transition: color 0.3s;
+      position: relative;
+    }
+    nav ul li a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #1a237e;
+      transition: width 0.3s;
+      margin: 0 auto;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: #1a237e;
+    }
+    nav ul li a:hover::after, nav ul li a.active::after {
+      width: 100%;
+    }
+
+    /* ---------- Hero Section ---------- */
+    #home {
+      background: linear-gradient(120deg, #e8eaf6 60%, #f8f9fb 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 32px rgba(26,35,126,0.15), 0 2px 8px rgba(26,35,126,0.08);
+      margin-bottom: 30px;
+      border: 6px solid #fff;
+      transition: transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s;
+      cursor: pointer;
+      background: #fff;
+      animation: floatPhoto 3s ease-in-out infinite alternate;
+    }
+    .profile-photo:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow: 0 16px 48px rgba(26,35,126,0.18), 0 4px 16px rgba(26,35,126,0.10);
+    }
+    @keyframes floatPhoto {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-12px);}
+    }
+    #home h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #1a237e;
+      margin-bottom: 10px;
+    }
+    #home p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #3949ab;
+    }
+    #home .hero-btns {
+      margin-top: 35px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #home .hero-btns a, #home .hero-btns button {
+      background: #1a237e;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1.08rem;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+      margin-bottom: 8px;
+    }
+    #home .hero-btns a:hover, #home .hero-btns button:hover {
+      background: #303f9f;
+      transform: translateY(-2px) scale(1.04);
+    }
+    #home .resume-btn {
+      background: linear-gradient(90deg, #ffd600, #d4ff00 80%);
+      color: #222;
+      font-weight: bold;
+      margin-left: 10px;
+      box-shadow: 0 4px 16px rgba(212,255,0,0.15);
+    }
+    #home .resume-btn:hover {
+      background: linear-gradient(90deg, #b7c900, #ffd600 80%);
+      color: #222;
+    }
+
+    /* ---------- About ---------- */
+    #about {
+      background: #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #about img {
+      width: 280px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transition: transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s;
+      cursor: pointer;
+    }
+    #about img:hover {
+      transform: scale(1.06) rotate(-2deg);
+      box-shadow: 0 12px 32px rgba(26,35,126,0.13);
+    }
+    #about .text {
+      max-width: 600px;
+      animation: fadeInRight 1.2s;
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(-40px);}
+      to { opacity: 1; transform: none;}
+    }
+    #about h2 {
+      color: #1a237e;
+      margin-bottom: 15px;
+    }
+    #about p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    /* ---------- Education ---------- */
+    #education {
+      background: #e3f2fd;
+    }
+    #education h2 {
+      color: #0d47a1;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 15px;
+    }
+    th {
+      background: #1976d2;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: left;
+    }
+    td {
+      background: #bbdefb;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    /* ---------- Skills ---------- */
+    #skills {
+      background: #fff3e0;
+      text-align: center;
+    }
+    #skills h2 {
+      color: #ef6c00;
+      margin-bottom: 40px;
+    }
+    .skills-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .skill-box {
+      background: #ffe0b2;
+      padding: 24px 20px 20px 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.09);
+      width: 280px;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-box:hover {
+      transform: translateY(-8px) scale(1.04) rotate(-1deg);
+      box-shadow: 0 8px 24px rgba(239,108,0,0.13);
+      background: #ffd180;
+    }
+    .skill-box h3 {
+      color: #e65100;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+    }
+    .skill-icon {
+      font-size: 1.4em;
+      margin-right: 4px;
+      color: #ef6c00;
+      transition: color 0.3s;
+    }
+    .skill-box:hover .skill-icon {
+      color: #ff9100;
+    }
+
+    /* ---------- Projects ---------- */
+    #projects {
+      background: #f3e5f5;
+    }
+    #projects h2 {
+      color: #6a1b9a;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .project-card {
+      background: #ede7f6;
+      padding: 24px 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.09);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(106,27,154,0.13);
+      background: #d1c4e9;
+    }
+    .project-card h3 {
+      color: #6a1b9a;
+      margin-bottom: 10px;
+    }
+
+    /* ---------- Certifications ---------- */
+    #certs {
+      background: #e8f5e9;
+    }
+    #certs h2 {
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .cert-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .cert-badge {
+      background: #a5d6a7;
+      color: #1b5e20;
+      padding: 12px 22px;
+      border-radius: 22px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(46,125,50,0.09);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      border: none;
+      outline: none;
+      border-bottom: 3px solid #388e3c;
+      margin-bottom: 8px;
+    }
+    .cert-badge:hover {
+      background: #66bb6a;
+      color: #fff;
+      transform: translateY(-2px) scale(1.04);
+    }
+    /* Modal for cert details */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(46,125,50,0.18);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-bg.active { display: flex; }
+    .modal-content {
+      background: #fff;
+      color: #222;
+      border-radius: 18px;
+      padding: 32px 28px;
+      min-width: 260px;
+      max-width: 90vw;
+      box-shadow: 0 8px 32px rgba(46,125,50,0.13);
+      position: relative;
+      text-align: center;
+      animation: fadeInModal 0.4s;
+    }
+    @keyframes fadeInModal {
+      from { opacity: 0; transform: scale(0.95);}
+      to { opacity: 1; transform: none;}
+    }
+    .modal-content h3 { color: #2e7d32; margin-bottom: 12px;}
+    .modal-content p { font-size: 1.08rem; }
+    .close-modal {
+      position: absolute;
+      top: 10px; right: 18px;
+      font-size: 1.6rem;
+      color: #2e7d32;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* ---------- Contact ---------- */
+    #contact {
+      background: #fff8e1;
+      text-align: center;
+    }
+    #contact h2 {
+      color: #ef6c00;
+      margin-bottom: 20px;
+    }
+    #contact p {
+      font-size: 1.1rem;
+      margin: 8px 0;
+    }
+    #contact a {
+      color: #ef6c00;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    #contact a:hover {
+      text-decoration: underline;
+      color: #e65100;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: #1a237e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      section { padding: 80px 4%; }
+      nav { padding: 15px 4%; }
+      #about { flex-direction: column; gap: 30px; }
+      .skills-grid { flex-direction: column; gap: 18px; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 60px 2%; }
+      nav { padding: 10px 2%; }
+      #home h2 { font-size: 2rem; }
+      .profile-photo { width: 120px; height: 120px; }
+      #about img { width: 180px; }
+      .skill-box, .project-card { width: 98%; }
+    }
   </style>
+  <!-- For skill icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
 
-  <section class="hero">
+<body>
+  <nav>
     <h1>S Guhan Raj</h1>
-    <p>Engineer | Coder | Creator</p>
-    <div class="hero-buttons">
-      <a href="about.html" class="btn">About</a>
-      <a href="education.html" class="btn">Education</a>
-      <a href="skills.html" class="btn">Skills</a>
-      <a href="projects.html" class="btn">Projects</a>
-      <a href="certs.html" class="btn">Certifications</a>
-      <a href="contact.html" class="btn">Contact</a>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certs">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ---------- Hero Section ---------- -->
+<section id="home" style="min-height:60vh;">
+  <h2 style="
+    font-size:4rem;
+    font-family:'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#1a237e;
+    margin-bottom:18px;
+    margin-top:40px;
+    text-shadow: 2px 4px 16px #e8eaf6, 0 2px 0 #ffd600;
+    ">
+    S GUHAN RAJ
+  </h2>
+  <p style="
+    font-size:1.6rem;
+    font-family:'Fira Sans', 'Segoe UI', Arial, sans-serif;
+    color:#3949ab;
+    margin-bottom:38px;
+    letter-spacing:1.5px;
+    font-weight:500;
+    ">
+    Computer Science Engineer &nbsp;|&nbsp; Web Developer &nbsp;|&nbsp; Tech Enthusiast
+  </p>
+  <div class="hero-btns">
+    <a href="#about">Explore My Portfolio ↓</a>
+    <a href="Resume.pdf" class="resume-btn" download>⬇️ Download Resume (PDF)</a>
+  </div>
+</section>
+
+  <!-- ---------- About ---------- -->
+<section id="about">
+  <div class="about-photo-wrap">
+    <div class="about-photo-gradient">
+      <img src="My PHOTO.jpg" alt="Profile Picture" title="That's me!" class="about-photo">
+    </div>
+  </div>
+  <div class="text about-card">
+    <h2>About Me</h2>
+    <p>
+      <span style="font-size:1.5rem;">👋</span>
+      A passionate Computer Science Engineer eager to explore web development and problem solving.<br>
+      Quick learner, team player, and creative thinker with leadership skills.
+    </p>
+    <p style="margin-top:18px;"><strong>Languages:</strong> English (fluent), Tamil (fluent), Telugu (mother tongue), French (elementary)</p>
+  </div>
+</section>
+
+  <!-- ---------- Education ---------- -->
+  <section id="education">
+    <h2>Education</h2>
+    <table>
+      <tr><th>Grade</th><th>Institution</th><th>Year</th></tr>
+      <tr><td>1–6</td><td>PSBB Millennium School, Cuddalore</td><td>2011–2018</td></tr>
+      <tr><td>7–10</td><td>PSBB Millennium School, Gerugambakkam</td><td>2018–2022</td></tr>
+      <tr><td>11–12</td><td>Velammal Bodhi Campus, Kolapakkam</td><td>2022–2024</td></tr>
+      <tr><td>B.Tech CSE</td><td>SRM Institute of Science & Technology, Kattankulathur</td><td>2024–2028</td></tr>
+    </table>
+  </section>
+
+  <!-- ---------- Skills ---------- -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <h3><span class="skill-icon"><i class="fas fa-code"></i></span>Programming</h3>
+        <p>C, C++, Python, Java</p>
+      </div>
+      <div class="skill-box">
+        <h3><span class="skill-icon"><i class="fas fa-globe"></i></span>Web Development</h3>
+        <p>HTML, CSS, JavaScript, Responsive Design</p>
+      </div>
+      <div class="skill-box">
+        <h3><span class="skill-icon"><i class="fas fa-users"></i></span>Soft Skills</h3>
+        <p>Leadership, Teamwork, Creative Thinking</p>
+      </div>
     </div>
   </section>
 
+  <!-- ---------- Projects ---------- -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <h2>Click on a project to visit the live site</h2>
+    <div class="projects-container">
+      <div class="project-card" onclick="window.open('https://guhan-art.github.io/Neon-Garage/', '_blank')">
+        <h3>Neon Garage</h3>
+        <p>A creative car enthusiast webpage with glowing neon design and interactive sections.</p>
+      </div>
+      <div class="project-card" onclick="window.open('https://guhan-art.github.io/Experience-the-car/', '_blank')">
+        <h3>Experience the car</h3>
+        <p>An another unit of Neon Garage where you can experience it.</p>
+      </div>
+      <div class="project-card" onclick="window.open('https://github.com/guhan-art', '_blank')">
+        <h3>College Bus Tracker</h3>
+        <p>App concept to track college buses in real time for students.</p>
+        <p>(Work in progress)</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:40px;">
+      For more projects, visit <a href="https://github.com/guhan-art" target="_blank">my GitHub</a>.
+    </p>
+  </section>
+
+  <!-- ---------- Certifications ---------- -->
+  <section id="certs">
+    <h2>Certifications</h2>
+    <div class="cert-badges">
+      <button class="cert-badge" data-title="Prompt Engineering – IIT Madras" data-desc="Completed Prompt Engineering course from IIT Madras.">Prompt Engineering</button>
+      <button class="cert-badge" data-title="Java, C++ & PHP – Udemy" data-desc="Crash courses on Java, C++ and PHP from Udemy.">Java, C++ & PHP</button>
+      <button class="cert-badge" data-title="AWS AI-ML Virtual Internship" data-desc="AI-ML Virtual Internship by AWS academy through AICTE.">AI-ML Virtual Internship</button>
+      <button class="cert-badge" data-title="Workshop on Chatbots Reloaded – SRMIST" data-desc="Attended workshop on Chatbots Reloaded: The AI Revolution.">Chatbots Reloaded</button>
+      <button class="cert-badge" data-title="Android Development" data-desc="Built 3 Android apps from scratch with Java.">Android Development</button>
+      <button class="cert-badge" data-title="Brain Brew’25 Ideathon - SRMIST" data-desc="Selected for final round of Brain Brew’25 Ideathon.">Brain Brew’25 Ideathon</button>
+      <button class="cert-badge" data-title="Azure + Databricks Training - SRMIST" data-desc="Azure and Databricks training completed.">Azure + Databricks</button>
+      <button class="cert-badge" data-title="AI/ML Career Plan – GUVI" data-desc="Completed GUVI AI/ML Career Plan.">GUVI AI/ML</button>
+      <button class="cert-badge" data-title="Financial Freedom – SOIC" data-desc="Financial Freedom course by SOIC.">Financial Freedom</button>
+      <button class="cert-badge" data-title="Full Stack Web Development – NoviTech" data-desc="Completed 30 days Full Stack Web Development course from NoviTech.">Full Stack Web Development</button>
+      <button class="cert-badge" data-title="10 projects in Java Script - Udemy" data-desc="Hands on JavaScript, Crafting 10 Projects from scratch.">10 projects in Java Script</button>
+      <button class="cert-badge" data-title="Appreciation - SRMIST" data-desc="Volunteering and active collaboration in Lens Lumina by FUTURIX.">Appreciation</button>
+      <button class="cert-badge" data-title="Thalir'25 Ideathon - SRMIST" data-desc="Selected up for round 1 of Thalir'25 Ideathon.">Thalir'25 Ideathon</button>
+      <button class="cert-badge" data-title="Deep Learning Workshop - SRMIST" data-desc="Workshop on real world problem using Deep Learning approaches.">Deep Learning</button>
+    </div>
+    <div class="modal-bg" id="cert-modal-bg">
+      <div class="modal-content" id="cert-modal-content">
+        <button class="close-modal" onclick="closeCertModal()">&times;</button>
+        <h3 id="cert-modal-title"></h3>
+        <p id="cert-modal-desc"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Contact ---------- -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p><strong>Phone:</strong> <a href="tel:+919994875901">+91 99948 75901</a></p>
+    <p><strong>Email:</strong> <a href="mailto:guhanrajs2607@gmail.com">guhanrajs2607@gmail.com</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/guhanraj/">S Guhan Raj</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/guhan-art">guhan-art</a></p>
+    <p><strong>X:</strong> <a href="https://x.com/GuhanRaj_S5">@GuhanRaj_S5</a></p>
+    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/gu.x.an/">gu.x.an</a></p>
+    <p><strong>Location:</strong> Chennai, Tamil Nadu, India</p>
+  </section>
+
+  <footer>
+    <p>© 2025 S Guhan Raj. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Section reveal on scroll
+    const sections = document.querySelectorAll('section');
+    const revealSection = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    const sectionObserver = new window.IntersectionObserver(revealSection, {
+      threshold: 0.15
+    });
+    sections.forEach(sec => sectionObserver.observe(sec));
+
+    // Navbar active link highlight
+    const navLinks = document.querySelectorAll('nav ul li a');
+    window.addEventListener('scroll', () => {
+      let fromTop = window.scrollY + 80;
+      navLinks.forEach(link => {
+        const section = document.querySelector(link.getAttribute('href'));
+        if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Certification modal popup
+    const certBadges = document.querySelectorAll('.cert-badge');
+    const certModalBg = document.getElementById('cert-modal-bg');
+    const certModalTitle = document.getElementById('cert-modal-title');
+    const certModalDesc = document.getElementById('cert-modal-desc');
+    certBadges.forEach(btn => {
+      btn.addEventListener('click', () => {
+        certModalTitle.textContent = btn.getAttribute('data-title');
+        certModalDesc.textContent = btn.getAttribute('data-desc');
+        certModalBg.classList.add('active');
+      });
+    });
+    function closeCertModal() {
+      certModalBg.classList.remove('active');
+    }
+    certModalBg.addEventListener('click', (e) => {
+      if (e.target === certModalBg) closeCertModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCertModal();
+    });
+  </script>
 </body>
 </html>
-
