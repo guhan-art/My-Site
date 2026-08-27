@@ -82,6 +82,18 @@
       overflow: hidden;
       background: #08090f;
     }
+
+    /* Particle constellation canvas */
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
     .bokeh-orb {
       position: absolute;
       border-radius: 50%;
@@ -115,6 +127,92 @@
       left: 40%;
       animation: floatOrb3 28s infinite alternate ease-in-out;
     }
+    .orb-4 {
+      width: 45vw;
+      height: 45vw;
+      background: radial-gradient(circle, rgba(52, 211, 153, 0.18) 0%, rgba(0,0,0,0) 70%);
+      top: 60%;
+      left: -5%;
+      animation: floatOrb4 32s infinite alternate ease-in-out;
+    }
+
+    /* Floating geometric shapes */
+    .floating-shape {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+    .shape-ring {
+      border: 1px solid rgba(147, 197, 253, 0.08);
+      border-radius: 50%;
+      animation: floatShape 20s infinite ease-in-out, fadeInShape 2s ease forwards;
+    }
+    .shape-diamond {
+      border: 1px solid rgba(99, 102, 241, 0.06);
+      transform: rotate(45deg);
+      animation: floatShapeSlow 25s infinite ease-in-out, spinShape 40s infinite linear, fadeInShape 2s ease forwards;
+    }
+    .shape-cross {
+      width: 1px !important;
+      height: 20px !important;
+      background: rgba(147, 197, 253, 0.06);
+      animation: floatShapeAlt 22s infinite ease-in-out, fadeInShape 2s ease forwards;
+    }
+    .shape-cross::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 1px;
+      background: rgba(147, 197, 253, 0.06);
+    }
+
+    /* Aurora wave glow */
+    .aurora-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 300px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(99, 102, 241, 0.04) 15%,
+        rgba(147, 197, 253, 0.06) 30%,
+        rgba(168, 85, 247, 0.04) 50%,
+        rgba(52, 211, 153, 0.03) 70%,
+        rgba(99, 102, 241, 0.04) 85%,
+        transparent 100%
+      );
+      filter: blur(40px);
+      animation: auroraSlide 18s infinite linear;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .aurora-wave-2 {
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 250px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(147, 197, 253, 0.03) 20%,
+        rgba(99, 102, 241, 0.05) 40%,
+        rgba(52, 211, 153, 0.03) 60%,
+        rgba(168, 85, 247, 0.04) 80%,
+        transparent 100%
+      );
+      filter: blur(50px);
+      animation: auroraSlide 24s infinite linear reverse;
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .grid-overlay {
       position: absolute;
       top: 0;
@@ -125,6 +223,7 @@
       background-size: 50px 50px;
       opacity: 0.8;
       pointer-events: none;
+      z-index: 2;
     }
 
     @keyframes floatOrb1 {
@@ -138,6 +237,37 @@
     @keyframes floatOrb3 {
       0% { transform: translate(0, 0) scale(1); }
       100% { transform: translate(5%, -10%) scale(1.15); }
+    }
+    @keyframes floatOrb4 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(10%, -6%) scale(1.08); }
+    }
+    @keyframes floatShape {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(-30px) translateX(15px); }
+      50% { transform: translateY(-10px) translateX(-20px); }
+      75% { transform: translateY(-40px) translateX(10px); }
+    }
+    @keyframes floatShapeSlow {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(-35px); }
+    }
+    @keyframes floatShapeAlt {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      33% { transform: translateY(-25px) translateX(20px); }
+      66% { transform: translateY(10px) translateX(-15px); }
+    }
+    @keyframes spinShape {
+      0% { transform: rotate(45deg); }
+      100% { transform: rotate(405deg); }
+    }
+    @keyframes fadeInShape {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes auroraSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* ---------- Scroll Progress ---------- */
@@ -1367,9 +1497,27 @@
 
   <!-- Ambient Spatial Background -->
   <div class="spatial-bg">
+    <canvas id="particle-canvas"></canvas>
     <div class="bokeh-orb orb-1"></div>
     <div class="bokeh-orb orb-2"></div>
     <div class="bokeh-orb orb-3"></div>
+    <div class="bokeh-orb orb-4"></div>
+    
+    <!-- Floating geometric shapes -->
+    <div class="floating-shape shape-ring" style="width:80px;height:80px;top:12%;left:8%;animation-delay:0s;"></div>
+    <div class="floating-shape shape-ring" style="width:50px;height:50px;top:65%;right:12%;animation-delay:3s;"></div>
+    <div class="floating-shape shape-ring" style="width:120px;height:120px;bottom:20%;left:25%;animation-delay:7s;"></div>
+    <div class="floating-shape shape-diamond" style="width:30px;height:30px;top:25%;right:20%;animation-delay:2s;"></div>
+    <div class="floating-shape shape-diamond" style="width:22px;height:22px;top:70%;left:15%;animation-delay:5s;"></div>
+    <div class="floating-shape shape-diamond" style="width:18px;height:18px;top:40%;right:35%;animation-delay:9s;"></div>
+    <div class="floating-shape shape-cross" style="top:30%;left:75%;animation-delay:1s;"></div>
+    <div class="floating-shape shape-cross" style="top:80%;left:50%;animation-delay:4s;"></div>
+    <div class="floating-shape shape-cross" style="top:15%;left:45%;animation-delay:8s;"></div>
+    
+    <!-- Aurora wave -->
+    <div class="aurora-wave"></div>
+    <div class="aurora-wave-2"></div>
+    
     <div class="grid-overlay"></div>
   </div>
 
@@ -1875,17 +2023,171 @@
 
     // ---------- Interactive Bokeh Parallax & Slow Drift ----------
     const orbs = document.querySelectorAll('.bokeh-orb');
+    const floatingShapes = document.querySelectorAll('.floating-shape');
     document.addEventListener('mousemove', (e) => {
       const mouseX = e.clientX / window.innerWidth - 0.5;
       const mouseY = e.clientY / window.innerHeight - 0.5;
       
       orbs.forEach((orb, index) => {
-        const depth = (index + 1) * 20; // different depth factor for each orb
+        const depth = (index + 1) * 20;
         const xShift = mouseX * depth;
         const yShift = mouseY * depth;
         orb.style.transform = `translate(${xShift}px, ${yShift}px)`;
       });
+
+      // Floating shapes parallax (subtle, inverted direction for depth)
+      floatingShapes.forEach((shape, index) => {
+        const depth = (index + 1) * 8;
+        const xShift = mouseX * -depth;
+        const yShift = mouseY * -depth;
+        shape.style.marginLeft = `${xShift}px`;
+        shape.style.marginTop = `${yShift}px`;
+      });
     });
+
+    // ---------- Particle Constellation System ----------
+    (function() {
+      const canvas = document.getElementById('particle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let w, h;
+      let mouseCanvasX = -9999, mouseCanvasY = -9999;
+      const PARTICLE_COUNT = 70;
+      const CONNECTION_DIST = 140;
+      const MOUSE_REPEL_DIST = 120;
+      const MOUSE_REPEL_FORCE = 0.8;
+      let particles = [];
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      document.addEventListener('mousemove', (e) => {
+        mouseCanvasX = e.clientX;
+        mouseCanvasY = e.clientY;
+      });
+      document.addEventListener('mouseleave', () => {
+        mouseCanvasX = -9999;
+        mouseCanvasY = -9999;
+      });
+
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * w;
+          this.y = Math.random() * h;
+          this.vx = (Math.random() - 0.5) * 0.35;
+          this.vy = (Math.random() - 0.5) * 0.35;
+          this.radius = Math.random() * 1.8 + 0.5;
+          this.alpha = Math.random() * 0.4 + 0.15;
+          // Color variety: blue, indigo, purple, teal
+          const colors = [
+            [147, 197, 253],
+            [99, 102, 241],
+            [168, 85, 247],
+            [52, 211, 153]
+          ];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+        update() {
+          // Mouse repulsion
+          const dx = this.x - mouseCanvasX;
+          const dy = this.y - mouseCanvasY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MOUSE_REPEL_DIST && dist > 0) {
+            const force = (MOUSE_REPEL_DIST - dist) / MOUSE_REPEL_DIST * MOUSE_REPEL_FORCE;
+            this.vx += (dx / dist) * force;
+            this.vy += (dy / dist) * force;
+          }
+
+          // Damping
+          this.vx *= 0.995;
+          this.vy *= 0.995;
+
+          this.x += this.vx;
+          this.y += this.vy;
+
+          // Wrap edges
+          if (this.x < -10) this.x = w + 10;
+          if (this.x > w + 10) this.x = -10;
+          if (this.y < -10) this.y = h + 10;
+          if (this.y > h + 10) this.y = -10;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.alpha})`;
+          ctx.fill();
+
+          // Subtle glow
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius * 3, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.alpha * 0.15})`;
+          ctx.fill();
+        }
+      }
+
+      // Initialize particles
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(new Particle());
+      }
+
+      function drawConnections() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < CONNECTION_DIST) {
+              const opacity = (1 - dist / CONNECTION_DIST) * 0.15;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(147, 197, 253, ${opacity})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw lines from particles close to mouse
+        for (let i = 0; i < particles.length; i++) {
+          const dx = particles[i].x - mouseCanvasX;
+          const dy = particles[i].y - mouseCanvasY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECTION_DIST * 1.5) {
+            const opacity = (1 - dist / (CONNECTION_DIST * 1.5)) * 0.25;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(mouseCanvasX, mouseCanvasY);
+            ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+
+        drawConnections();
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
 
     // ---------- 3D Card Tilt Interaction ----------
     function applyCardTiltEffects() {
