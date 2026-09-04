@@ -106,7 +106,7 @@
     .orb-1 {
       width: 60vw;
       height: 60vw;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(0,0,0,0) 70%);
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, rgba(0,0,0,0) 70%);
       top: -15%;
       left: -10%;
       animation: floatOrb1 25s infinite alternate ease-in-out;
@@ -114,7 +114,7 @@
     .orb-2 {
       width: 65vw;
       height: 65vw;
-      background: radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, rgba(0,0,0,0) 70%);
+      background: radial-gradient(circle, rgba(147, 197, 253, 0.45) 0%, rgba(0,0,0,0) 70%);
       bottom: -15%;
       right: -10%;
       animation: floatOrb2 30s infinite alternate ease-in-out;
@@ -122,7 +122,7 @@
     .orb-3 {
       width: 50vw;
       height: 50vw;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(0,0,0,0) 70%);
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(0,0,0,0) 70%);
       top: 35%;
       left: 40%;
       animation: floatOrb3 28s infinite alternate ease-in-out;
@@ -130,10 +130,26 @@
     .orb-4 {
       width: 45vw;
       height: 45vw;
-      background: radial-gradient(circle, rgba(52, 211, 153, 0.18) 0%, rgba(0,0,0,0) 70%);
+      background: radial-gradient(circle, rgba(52, 211, 153, 0.3) 0%, rgba(0,0,0,0) 70%);
       top: 60%;
       left: -5%;
       animation: floatOrb4 32s infinite alternate ease-in-out;
+    }
+    .orb-5 {
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.3) 0%, rgba(0,0,0,0) 70%);
+      top: -10%;
+      right: -15%;
+      animation: floatOrb5 35s infinite alternate ease-in-out;
+    }
+    .orb-6 {
+      width: 40vw;
+      height: 40vw;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, rgba(0,0,0,0) 70%);
+      bottom: 10%;
+      left: 35%;
+      animation: floatOrb6 22s infinite alternate ease-in-out;
     }
 
     /* Floating geometric shapes */
@@ -241,6 +257,14 @@
     @keyframes floatOrb4 {
       0% { transform: translate(0, 0) scale(1); }
       100% { transform: translate(10%, -6%) scale(1.08); }
+    }
+    @keyframes floatOrb5 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-12%, 8%) scale(1.12); }
+    }
+    @keyframes floatOrb6 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(6%, -12%) scale(1.06); }
     }
     @keyframes floatShape {
       0%, 100% { transform: translateY(0) translateX(0); }
@@ -975,173 +999,164 @@
       border-bottom-color: #fff;
     }
 
-    /* ---------- Holographic Certifications Section ---------- */
-    .hologram-stage-wrapper {
-      position: relative;
+    /* ---------- Certifications Marquee Section ---------- */
+    .cert-marquee-section {
       width: 100%;
-      height: 480px;
-      margin: 0 auto;
-      max-width: 1000px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
-      border-radius: 28px;
-      border: 1px solid var(--glass-border);
-      background: rgba(12, 14, 24, 0.2);
-      box-shadow: var(--glass-shadow);
-      padding: 40px;
-    }
-    .holo-projector {
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 30px;
-      border-radius: 50% / 15px;
-      background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      pointer-events: none;
-      z-index: 1;
-    }
-    .beam-glow {
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 250px;
-      height: 380px;
-      background: linear-gradient(to top, rgba(99, 102, 241, 0.18) 0%, rgba(147, 197, 253, 0.03) 50%, transparent 100%);
-      clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
-      filter: blur(15px);
-      pointer-events: none;
-      opacity: 0.7;
-    }
-
-    /* Carousel 3D Scene */
-    .hologram-scene {
-      width: 100%;
-      height: 100%;
-      perspective: 1200px;
-      perspective-origin: 50% 25%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .hologram-carousel {
-      width: 200px;
-      height: 270px;
       position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 10px 0;
+    }
+    .cert-marquee-section::before,
+    .cert-marquee-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .cert-marquee-section::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg-dark), transparent);
+    }
+    .cert-marquee-section::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg-dark), transparent);
     }
 
-    /* Cards in Carousel — NO tilt-card class, NO !important hover transforms */
-    .hologram-card {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 200px;
-      height: 270px;
-      background: rgba(20, 22, 36, 0.55);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .cert-marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: marqueeScroll 45s linear infinite;
+      padding: 12px 0;
+    }
+    .cert-marquee-track:hover {
+      animation-play-state: paused;
+    }
+    .cert-marquee-track.reverse {
+      animation: marqueeScrollReverse 50s linear infinite;
+    }
+    .cert-marquee-track.reverse:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marqueeScrollReverse {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .cert-marquee-card {
+      flex-shrink: 0;
+      width: 280px;
+      min-height: 170px;
+      background: rgba(18, 20, 32, 0.6);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 20px;
-      padding: 24px 18px;
+      padding: 22px 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      backface-visibility: visible;
       cursor: pointer;
-      /* Only transition border and box-shadow, NOT transform (prevents flicker) */
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.35s ease;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
-    .hologram-card:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-      /* NO transform here — the card's 3D position is set by JS, hover must not override it */
+    /* Colored accent strip at top */
+    .cert-marquee-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--card-accent, linear-gradient(90deg, var(--primary), var(--secondary)));
+      opacity: 0.7;
+      transition: opacity 0.3s;
     }
-    .hologram-card-header {
+    .cert-marquee-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 16px 40px rgba(99, 102, 241, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+    }
+    .cert-marquee-card:hover::before {
+      opacity: 1;
+    }
+    .cert-marquee-card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
-      padding-bottom: 8px;
+      margin-bottom: 14px;
     }
-    .hologram-card-header i {
-      font-size: 1.15rem;
+    .cert-marquee-card-header i {
+      font-size: 1.3rem;
       color: var(--primary);
     }
-    .hologram-card-body {
+    .cert-marquee-card-idx {
+      font-family: var(--font-header);
+      font-size: 0.6rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.2);
+    }
+    .cert-marquee-card-body {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       margin-bottom: 10px;
     }
-    .hologram-card-title {
+    .cert-marquee-card-title {
       font-family: var(--font-header);
       font-size: 0.95rem;
       font-weight: 600;
       color: #fff;
-      text-align: center;
-      line-height: 1.45;
+      line-height: 1.5;
+    }
+    .cert-marquee-card-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-top: 6px;
       display: -webkit-box;
-      -webkit-line-clamp: 4;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .hologram-card-footer {
+    .cert-marquee-card-footer {
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .hologram-card-footer span {
+    .cert-marquee-card-footer span {
       font-family: var(--font-header);
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: var(--text-muted);
     }
-    .hologram-card-footer i {
-      font-size: 0.75rem;
-      opacity: 0.6;
+    .cert-marquee-card-footer i {
+      font-size: 0.8rem;
       color: var(--primary);
+      opacity: 0.5;
       transition: opacity 0.3s;
     }
-    .hologram-card:hover .hologram-card-footer i {
+    .cert-marquee-card:hover .cert-marquee-card-footer i {
       opacity: 1;
     }
-
-    /* Left/Right Controls */
-    .holo-ctrl {
-      position: absolute;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 10;
+    .cert-row-gap {
+      height: 8px;
     }
-    .holo-ctrl:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.25);
-      transform: translateY(-2px);
-    }
-    .holo-ctrl.prev { left: 30px; }
-    .holo-ctrl.next { right: 30px; }
 
     /* Spatial Modal Lightbox */
     .modal-bg {
@@ -1464,29 +1479,14 @@
       .cert-img-container { max-height: 280px; }
       #cert-modal-img { max-height: 280px; }
       
-      .hologram-stage-wrapper {
-        height: 400px;
-        padding: 20px;
+      .cert-marquee-card {
+        width: 220px;
+        min-height: 140px;
+        padding: 16px 14px;
       }
-      .hologram-carousel {
-        width: 140px;
-        height: 200px;
+      .cert-marquee-card-title {
+        font-size: 0.85rem;
       }
-      .hologram-card {
-        width: 130px;
-        height: 185px;
-        padding: 12px 10px;
-      }
-      .hologram-card-title {
-        font-size: 0.8rem;
-        -webkit-line-clamp: 3;
-      }
-      .holo-ctrl {
-        width: 36px;
-        height: 36px;
-      }
-      .holo-ctrl.prev { left: 10px; }
-      .holo-ctrl.next { right: 10px; }
     }
   </style>
 </head>
@@ -1502,6 +1502,8 @@
     <div class="bokeh-orb orb-2"></div>
     <div class="bokeh-orb orb-3"></div>
     <div class="bokeh-orb orb-4"></div>
+    <div class="bokeh-orb orb-5"></div>
+    <div class="bokeh-orb orb-6"></div>
     
     <!-- Floating geometric shapes -->
     <div class="floating-shape shape-ring" style="width:80px;height:80px;top:12%;left:8%;animation-delay:0s;"></div>
@@ -1779,20 +1781,15 @@
   <section id="certs">
     <h2 class="section-title">Certifications</h2>
     
-    <div class="hologram-stage-wrapper">
-      <!-- Projector Plate -->
-      <div class="holo-projector">
-        <div class="beam-glow"></div>
+    <div class="cert-marquee-section">
+      <div class="cert-marquee-track" id="cert-marquee-row1">
+        <!-- Populated dynamically -->
       </div>
-      
-      <!-- Controls -->
-      <button class="holo-ctrl prev" onclick="rotateHoloCarousel(1)"><i class="fas fa-chevron-left"></i></button>
-      <button class="holo-ctrl next" onclick="rotateHoloCarousel(-1)"><i class="fas fa-chevron-right"></i></button>
-      
-      <div class="hologram-scene">
-        <div class="hologram-carousel" id="hologram-carousel">
-          <!-- Populated dynamically -->
-        </div>
+    </div>
+    <div class="cert-row-gap"></div>
+    <div class="cert-marquee-section">
+      <div class="cert-marquee-track reverse" id="cert-marquee-row2">
+        <!-- Populated dynamically -->
       </div>
     </div>
   </section>
@@ -1998,7 +1995,7 @@
     
     // Add spatial hover effects to interactive elements
     function applyCursorHoverEffects() {
-      const interactives = document.querySelectorAll('a, button, .cert-badge, .project-card, nav, .avatar-container, .hologram-card, .holo-ctrl');
+      const interactives = document.querySelectorAll('a, button, .cert-badge, .project-card, nav, .avatar-container, .cert-marquee-card');
       interactives.forEach(elem => {
         // Remove existing listeners first to avoid duplication
         elem.removeEventListener('mouseenter', addCursorClass);
@@ -2245,146 +2242,77 @@
       applyCardTiltEffects();
     });
 
-    // ---------- Next-Level Hologram Certifications Carousel ----------
+    // ---------- Certifications Marquee ----------
     const allCertificates = [
-      { title: "AWS AI-ML Virtual Internship", desc: "Completed AWS AI-ML Virtual Internship by AWS academy through AICTE. Analyzed machine learning workflows and cloud deployment paradigms.", image: "certificates/AICTE certificate in jpg.jpg", icon: "fab fa-aws" },
-      { title: "AWS Cloud Foundation", desc: "AWS Academy training covering core cloud concepts, architecture, services, security, architecture, pricing, and support.", image: "certificates/AWS cloud foundation certificate in jpg.jpg", icon: "fab fa-aws" },
-      { title: "AWS Machine Learning", desc: "AWS Academy curriculum specializing in machine learning pipelines, feature engineering, and model optimization using Amazon SageMaker.", image: "certificates/AWS machine learning certificate in jpg.jpg", icon: "fab fa-aws" },
-      { title: "Prompt Engineering \u2013 IIT Madras", desc: "Completed Prompt Engineering course from IIT Madras. Formulated strategic prompting techniques and prompt-based workflows.", image: "certificates/Prompt Engineering Certificate.jpg", icon: "fas fa-terminal" },
-      { title: "AI/ML Career Plan \u2013 GUVI", desc: "Completed GUVI AI/ML Career Plan. Deep dive into deep learning, computer vision, and NLP frameworks.", image: "certificates/Guvi Certificate.png", icon: "fas fa-brain" },
-      { title: "Azure + Databricks Training - SRMIST", desc: "Azure and Databricks training completed. Developed analytics pipelines and cloud data models.", image: "", icon: "fas fa-cloud" },
-      { title: "Deep Learning Workshop - SRMIST", desc: "Workshop on real world problem solving using Deep Learning neural models.", image: "", icon: "fas fa-layer-group" },
-      { title: "Java, C++ & PHP \u2013 Udemy", desc: "Crash courses covering core OOP concepts, language structures, memory operations, and server-side operations in Java, C++ and PHP.", image: "certificates/udemy certificate jpg.jpg", icon: "fab fa-java" },
-      { title: "Android Development", desc: "Built 3 Android apps from scratch with Java, layout designing, and local database integrations.", image: "certificates/completion certificate in jpg.jpg", icon: "fab fa-android" },
-      { title: "10 projects in Java Script - Udemy", desc: "Hands on JavaScript, Crafting 10 unique, fully interactive web applications from scratch.", image: "certificates/udemy certificate 2.jpg", icon: "fab fa-js" },
-      { title: "Full Stack Web Development \u2013 NoviTech", desc: "Completed 30 days Full Stack Web Development course from NoviTech covering HTML, CSS, JS, SQL and server frameworks.", image: "", icon: "fas fa-laptop-code" },
-      { title: "French Language A1", desc: "Elementary French language certification covering vocabulary, conversational rules, and core reading skills.", image: "certificates/French certificate.jpg", icon: "fas fa-language" },
-      { title: "Workshop on Chatbots Reloaded \u2013 SRMIST", desc: "Attended workshop on Chatbots Reloaded: The AI Revolution. Built and configured custom chatbot endpoints.", image: "certificates/chatbot certificate in jpg.jpg", icon: "fas fa-comments" },
-      { title: "Brain Brew'25 Ideathon - SRMIST", desc: "Selected for the final round of the Brain Brew'25 Ideathon for showcasing innovative project designs.", image: "certificates/Ideathon certificate.jpg", icon: "fas fa-lightbulb" },
-      { title: "Financial Freedom \u2013 SOIC", desc: "Financial Freedom course by SOIC, exploring stock valuations, macroeconomics, and personal finance strategies.", image: "certificates/SOIC certificate.jpg", icon: "fas fa-chart-line" },
-      { title: "Appreciation - SRMIST", desc: "Volunteering, coordination and active technical collaboration in Lens Lumina by FUTURIX.", image: "certificates/aarush certificate in jpg.jpg", icon: "fas fa-award" },
-      { title: "Internship Offer Letter", desc: "Selection document and internship contract validation for engineering role application.", image: "certificates/offer letter.jpg", icon: "fas fa-file-contract" },
-      { title: "Thalir'25 Ideathon - SRMIST", desc: "Selected up for round 1 of Thalir'25 Ideathon for innovative tech pitch.", image: "", icon: "fas fa-lightbulb" }
+      { title: "AWS AI-ML Virtual Internship", desc: "Completed AWS AI-ML Virtual Internship by AWS academy through AICTE.", image: "certificates/AICTE certificate in jpg.jpg", icon: "fab fa-aws", accent: "linear-gradient(90deg, #f97316, #fbbf24)" },
+      { title: "AWS Cloud Foundation", desc: "AWS Academy training covering core cloud concepts, architecture, and services.", image: "certificates/AWS cloud foundation certificate in jpg.jpg", icon: "fab fa-aws", accent: "linear-gradient(90deg, #f97316, #fbbf24)" },
+      { title: "AWS Machine Learning", desc: "AWS Academy specializing in ML pipelines, feature engineering, and SageMaker.", image: "certificates/AWS machine learning certificate in jpg.jpg", icon: "fab fa-aws", accent: "linear-gradient(90deg, #f97316, #fbbf24)" },
+      { title: "Prompt Engineering \u2013 IIT Madras", desc: "Completed Prompt Engineering course from IIT Madras.", image: "certificates/Prompt Engineering Certificate.jpg", icon: "fas fa-terminal", accent: "linear-gradient(90deg, #6366f1, #a855f7)" },
+      { title: "AI/ML Career Plan \u2013 GUVI", desc: "Deep dive into deep learning, computer vision, and NLP frameworks.", image: "certificates/Guvi Certificate.png", icon: "fas fa-brain", accent: "linear-gradient(90deg, #6366f1, #a855f7)" },
+      { title: "Azure + Databricks Training", desc: "Azure and Databricks training. Analytics pipelines and cloud data models.", image: "", icon: "fas fa-cloud", accent: "linear-gradient(90deg, #0ea5e9, #6366f1)" },
+      { title: "Deep Learning Workshop", desc: "Workshop on real world problem solving using Deep Learning neural models.", image: "", icon: "fas fa-layer-group", accent: "linear-gradient(90deg, #6366f1, #a855f7)" },
+      { title: "Java, C++ & PHP \u2013 Udemy", desc: "Core OOP concepts, language structures, and server-side operations.", image: "certificates/udemy certificate jpg.jpg", icon: "fab fa-java", accent: "linear-gradient(90deg, #ef4444, #f97316)" },
+      { title: "Android Development", desc: "Built 3 Android apps with Java, layouts, and local database integrations.", image: "certificates/completion certificate in jpg.jpg", icon: "fab fa-android", accent: "linear-gradient(90deg, #34d399, #0ea5e9)" },
+      { title: "10 projects in JavaScript", desc: "Crafting 10 unique, fully interactive web applications from scratch.", image: "certificates/udemy certificate 2.jpg", icon: "fab fa-js", accent: "linear-gradient(90deg, #fbbf24, #f97316)" },
+      { title: "Full Stack Web Dev \u2013 NoviTech", desc: "30 days Full Stack covering HTML, CSS, JS, SQL and server frameworks.", image: "", icon: "fas fa-laptop-code", accent: "linear-gradient(90deg, #93c5fd, #6366f1)" },
+      { title: "French Language A1", desc: "Elementary French certification covering vocabulary and reading skills.", image: "certificates/French certificate.jpg", icon: "fas fa-language", accent: "linear-gradient(90deg, #f472b6, #a855f7)" },
+      { title: "Workshop on Chatbots Reloaded", desc: "Built and configured custom chatbot endpoints.", image: "certificates/chatbot certificate in jpg.jpg", icon: "fas fa-comments", accent: "linear-gradient(90deg, #0ea5e9, #34d399)" },
+      { title: "Brain Brew'25 Ideathon", desc: "Selected for the final round for showcasing innovative project designs.", image: "certificates/Ideathon certificate.jpg", icon: "fas fa-lightbulb", accent: "linear-gradient(90deg, #fbbf24, #ef4444)" },
+      { title: "Financial Freedom \u2013 SOIC", desc: "Stock valuations, macroeconomics, and personal finance strategies.", image: "certificates/SOIC certificate.jpg", icon: "fas fa-chart-line", accent: "linear-gradient(90deg, #34d399, #0ea5e9)" },
+      { title: "Appreciation - SRMIST", desc: "Volunteering and active collaboration in Lens Lumina by FUTURIX.", image: "certificates/aarush certificate in jpg.jpg", icon: "fas fa-award", accent: "linear-gradient(90deg, #a855f7, #f472b6)" },
+      { title: "Internship Offer Letter", desc: "Selection document and internship contract for engineering role.", image: "certificates/offer letter.jpg", icon: "fas fa-file-contract", accent: "linear-gradient(90deg, #93c5fd, #34d399)" },
+      { title: "Thalir'25 Ideathon", desc: "Selected for round 1 for innovative tech pitch.", image: "", icon: "fas fa-lightbulb", accent: "linear-gradient(90deg, #fbbf24, #ef4444)" }
     ];
 
-    let currentRotation = 0;
-    let autoRotateInterval;
-
-    function updateHologramCardVisibility() {
-      const carousel = document.getElementById('hologram-carousel');
-      const cards = carousel.querySelectorAll('.hologram-card');
-      const count = allCertificates.length;
-      const angleStep = 360 / count;
-
-      cards.forEach((card, index) => {
-        let absAngle = ((index * angleStep + currentRotation) % 360 + 360) % 360;
-        if (absAngle > 180) absAngle -= 360;
-
-        if (Math.abs(absAngle) <= 80) {
-          card.style.opacity = '1';
-          card.style.pointerEvents = 'auto';
-          card.style.visibility = 'visible';
-          const factor = 1 - (Math.abs(absAngle) / 100);
-          card.style.filter = `blur(${(1 - factor) * 1.5}px)`;
-        } else {
-          card.style.opacity = '0';
-          card.style.pointerEvents = 'none';
-          card.style.visibility = 'hidden';
-        }
+    function createCertCard(cert, index) {
+      const card = document.createElement('div');
+      card.className = 'cert-marquee-card';
+      card.style.setProperty('--card-accent', cert.accent);
+      card.innerHTML = `
+        <div class="cert-marquee-card-header">
+          <i class="${cert.icon || 'fas fa-award'}"></i>
+          <span class="cert-marquee-card-idx">${String(index + 1).padStart(2, '0')}</span>
+        </div>
+        <div class="cert-marquee-card-body">
+          <div class="cert-marquee-card-title">${cert.title}</div>
+          <div class="cert-marquee-card-desc">${cert.desc}</div>
+        </div>
+        <div class="cert-marquee-card-footer">
+          <span>View Certificate</span>
+          <i class="fas fa-expand-arrows-alt"></i>
+        </div>
+      `;
+      card.addEventListener('click', () => {
+        openCertModal(cert.title, cert.desc, cert.image);
       });
+      return card;
     }
 
-    function renderHologramCarousel() {
-      const carousel = document.getElementById('hologram-carousel');
-      carousel.innerHTML = '';
+    function renderCertMarquee() {
+      const row1 = document.getElementById('cert-marquee-row1');
+      const row2 = document.getElementById('cert-marquee-row2');
+      row1.innerHTML = '';
+      row2.innerHTML = '';
 
-      const count = allCertificates.length;
-      const radius = window.innerWidth < 600 ? 170 : 280;
-      const angleStep = 360 / count;
+      const mid = Math.ceil(allCertificates.length / 2);
+      const firstHalf = allCertificates.slice(0, mid);
+      const secondHalf = allCertificates.slice(mid);
 
-      allCertificates.forEach((cert, index) => {
-        const card = document.createElement('div');
-        card.className = 'hologram-card';
-
-        const angle = index * angleStep;
-        card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
-
-        card.innerHTML = `
-          <div class="hologram-card-header">
-            <i class="${cert.icon || 'fas fa-award'}"></i>
-            <i class="fas fa-fingerprint" style="opacity:0.3; font-size:0.8rem;"></i>
-          </div>
-          <div class="hologram-card-body">
-            <h4 class="hologram-card-title">${cert.title}</h4>
-          </div>
-          <div class="hologram-card-footer">
-            <span>HOLO_${String(index + 1).padStart(2, '0')}</span>
-            <i class="fas fa-expand-arrows-alt"></i>
-          </div>
-        `;
-
-        // Click handler — uses mousedown tracking to avoid accidental triggers
-        let cardMouseDown = false;
-        card.addEventListener('mousedown', () => { cardMouseDown = true; });
-        card.addEventListener('mouseup', () => {
-          if (cardMouseDown) {
-            openCertModal(cert.title, cert.desc, cert.image);
-          }
-          cardMouseDown = false;
-        });
-        // Also support simple tap on touch devices
-        card.addEventListener('touchend', (e) => {
-          e.preventDefault();
-          openCertModal(cert.title, cert.desc, cert.image);
-        });
-
-        carousel.appendChild(card);
+      // Render first row (original + duplicate for seamless loop)
+      [...firstHalf, ...firstHalf].forEach((cert, i) => {
+        row1.appendChild(createCertCard(cert, i % mid));
       });
 
-      // Apply custom cursor snap points (NOT tilt effects)
+      // Render second row (original + duplicate for seamless loop)
+      [...secondHalf, ...secondHalf].forEach((cert, i) => {
+        row2.appendChild(createCertCard(cert, mid + (i % secondHalf.length)));
+      });
+
       applyCursorHoverEffects();
-
-      currentRotation = 0;
-      carousel.style.transform = `rotateY(0deg)`;
-      updateHologramCardVisibility();
     }
 
-    function rotateHoloCarousel(direction) {
-      const carousel = document.getElementById('hologram-carousel');
-      const count = allCertificates.length;
-      const angleStep = 360 / count;
-
-      currentRotation += direction * angleStep;
-      carousel.style.transform = `rotateY(${currentRotation}deg)`;
-      updateHologramCardVisibility();
-    }
-
-    function startAutoRotate() {
-      stopAutoRotate();
-      autoRotateInterval = setInterval(() => {
-        rotateHoloCarousel(-1);
-      }, 4500);
-    }
-
-    function stopAutoRotate() {
-      if (autoRotateInterval) {
-        clearInterval(autoRotateInterval);
-      }
-    }
-
-    // Initialize carousel on load
     document.addEventListener('DOMContentLoaded', () => {
-      renderHologramCarousel();
-      startAutoRotate();
-
-      const stage = document.querySelector('.hologram-stage-wrapper');
-      stage.addEventListener('mouseenter', stopAutoRotate);
-      stage.addEventListener('mouseleave', startAutoRotate);
-    });
-
-    // Handle window resize to update 3D radius
-    window.addEventListener('resize', () => {
-      renderHologramCarousel();
+      renderCertMarquee();
     });
 
     // ---------- Certification Lightbox Modal Logic ----------
