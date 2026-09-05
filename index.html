@@ -266,20 +266,16 @@
     section {
       padding: 120px 10% 80px;
       min-height: 100vh;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1);
-      position: relative;
-    }
-    section.visible {
       opacity: 1;
       transform: translateY(0);
+      transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1);
+      position: relative;
     }
     .section-title {
       font-family: var(--font-header);
       font-size: 2.5rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-main);
       margin-bottom: 50px;
       text-align: center;
       letter-spacing: 0.5px;
@@ -304,7 +300,7 @@
       transform: translateX(-50%);
       width: fit-content;
       max-width: 95%;
-      background: rgba(15, 17, 26, 0.4);
+      background: var(--glass-bg);
       backdrop-filter: blur(25px) saturate(180%);
       -webkit-backdrop-filter: blur(25px) saturate(180%);
       border: 1px solid var(--glass-border);
@@ -320,8 +316,8 @@
     }
     nav.shrink {
       top: 12px;
-      background: rgba(10, 11, 18, 0.65);
-      border-color: rgba(255, 255, 255, 0.12);
+      background: var(--glass-bg-hover);
+      border-color: var(--glass-border-hover);
       padding: 8px 24px;
     }
     nav .logo {
@@ -339,12 +335,9 @@
     nav h1 {
       font-family: var(--font-header);
       font-size: 1.15rem;
-      font-weight: 600;
-      color: #fff;
+      font-weight: 700;
+      color: var(--text-main);
       letter-spacing: 0.5px;
-      background: linear-gradient(to right, #fff, #b4d3fe);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -367,13 +360,13 @@
       white-space: nowrap;
     }
     .nav-links li a:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      background: var(--glass-bg-hover);
     }
     .nav-links li a.active {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.09);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 10px rgba(0,0,0,0.1);
+      color: var(--primary);
+      background: var(--glass-bg-hover);
+      box-shadow: inset 0 1px 0 var(--glass-border), 0 2px 10px rgba(0,0,0,0.05);
     }
 
     /* Mobile Hamburger Menu */
@@ -440,10 +433,10 @@
       font-family: var(--font-header);
       font-size: 3.8rem;
       font-weight: 800;
-      color: #fff;
+      color: var(--text-main);
       letter-spacing: -0.5px;
       margin-bottom: 12px;
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
     .typewriter-container {
       font-family: var(--font-body);
@@ -455,7 +448,7 @@
       height: 36px;
     }
     .typewriter-text {
-      color: #fff;
+      color: var(--primary);
       font-weight: 600;
     }
     .cursor {
@@ -479,7 +472,7 @@
     .glass-btn {
       position: relative;
       background: var(--glass-bg);
-      color: #fff;
+      color: var(--text-main);
       padding: 12px 32px;
       border-radius: 30px;
       text-decoration: none;
@@ -590,7 +583,7 @@
     }
     .detail-header {
       font-family: var(--font-header);
-      color: #fff;
+      color: var(--text-main);
       font-size: 1.15rem;
       letter-spacing: 0.5px;
       margin-bottom: 20px;
@@ -706,7 +699,7 @@
     .timeline-degree {
       font-family: var(--font-header);
       font-size: 1.25rem;
-      color: #fff;
+      color: var(--text-main);
       font-weight: 600;
       margin-bottom: 6px;
     }
@@ -764,7 +757,7 @@
     }
     .skill-box h3 {
       font-family: var(--font-header);
-      color: #fff;
+      color: var(--text-main);
       font-size: 1.15rem;
       font-weight: 600;
       letter-spacing: 0.5px;
@@ -854,7 +847,7 @@
     }
     .project-card h3 {
       font-family: var(--font-header);
-      color: #fff;
+      color: var(--text-main);
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 12px;
@@ -959,10 +952,10 @@
       flex-shrink: 0;
       width: 280px;
       min-height: 170px;
-      background: rgba(18, 20, 32, 0.6);
+      background: var(--glass-bg);
       backdrop-filter: blur(18px) saturate(140%);
       -webkit-backdrop-filter: blur(18px) saturate(140%);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--glass-border);
       border-radius: 20px;
       padding: 22px 20px;
       display: flex;
@@ -972,7 +965,7 @@
       position: relative;
       overflow: hidden;
       transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.35s ease;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      box-shadow: var(--glass-shadow);
     }
     /* Colored accent strip at top */
     .cert-marquee-card::before {
@@ -1022,7 +1015,7 @@
       font-family: var(--font-header);
       font-size: 0.95rem;
       font-weight: 600;
-      color: #fff;
+      color: var(--text-main);
       line-height: 1.5;
     }
     .cert-marquee-card-desc {
@@ -1249,7 +1242,7 @@
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 8px;
-      color: #fff;
+      color: var(--text-main);
     }
     .contact-card p, .contact-card a {
       font-family: var(--font-body);
@@ -1259,7 +1252,7 @@
       transition: color 0.2s;
     }
     .contact-card a:hover {
-      color: #fff;
+      color: var(--primary);
     }
     .social-dock {
       background: var(--glass-bg);
@@ -1274,7 +1267,7 @@
     .social-dock h3 {
       font-family: var(--font-header);
       font-size: 1.05rem;
-      color: #fff;
+      color: var(--text-main);
       font-weight: 600;
       margin-bottom: 20px;
       letter-spacing: 0.5px;
@@ -1318,6 +1311,86 @@
       letter-spacing: 0.5px;
     }
 
+    /* ---------- Theme Switcher ---------- */
+    .theme-switcher {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+    }
+    .theme-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      font-size: 1.15rem;
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .theme-btn:hover {
+      transform: scale(1.1) rotate(15deg);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .theme-panel {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      background: var(--bg-dark);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 10px;
+      width: 170px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px) scale(0.95);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .theme-panel.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+    .theme-option {
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      color: var(--text-main);
+      user-select: none;
+    }
+    .theme-option:hover {
+      background: var(--glass-bg-hover);
+      transform: translateX(3px);
+    }
+    .theme-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px currentColor;
+    }
+
     /* ---------- Responsive Styles ---------- */
     @media (max-width: 900px) {
       section { padding: 100px 6% 60px; }
@@ -1331,7 +1404,7 @@
         right: 0;
         height: 100vh;
         top: 0;
-        background-color: rgba(8, 9, 15, 0.96);
+        background-color: var(--bg-dark);
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
         display: flex;
@@ -1341,8 +1414,8 @@
         width: 60%;
         transform: translateX(100%);
         transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: -10px 0 35px rgba(0, 0, 0, 0.6);
-        border-left: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: -10px 0 35px rgba(0, 0, 0, 0.3);
+        border-left: 1px solid var(--glass-border);
         gap: 20px;
         z-index: 1001;
         padding: 40px 0;
@@ -1396,6 +1469,21 @@
 </head>
 
 <body>
+  <!-- Theme Switcher Widget -->
+  <div class="theme-switcher">
+    <button class="theme-btn" id="theme-btn" title="Switch Theme" aria-label="Switch Theme">
+      <i class="fas fa-palette"></i>
+    </button>
+    <div class="theme-panel" id="theme-panel">
+      <div class="theme-option" data-theme-val="light-tech"><span class="theme-dot" style="background:#2563eb;color:#2563eb"></span> Pro Light</div>
+      <div class="theme-option" data-theme-val="cyber"><span class="theme-dot" style="background:#00f0ff;color:#00f0ff"></span> Cyber Neon</div>
+      <div class="theme-option" data-theme-val="matrix"><span class="theme-dot" style="background:#00ff41;color:#00ff41"></span> Matrix</div>
+      <div class="theme-option" data-theme-val="ocean"><span class="theme-dot" style="background:#38bdf8;color:#38bdf8"></span> Ocean</div>
+      <div class="theme-option" data-theme-val="sunset"><span class="theme-dot" style="background:#fb923c;color:#fb923c"></span> Sunset</div>
+      <div class="theme-option" data-theme-val="aurora"><span class="theme-dot" style="background:#a855f7;color:#a855f7"></span> Aurora</div>
+    </div>
+  </div>
+
   <!-- Scroll progress bar -->
   <div id="scroll-progress"></div>
 
@@ -1743,32 +1831,39 @@
     const themePanel = document.getElementById('theme-panel');
     const themeOptions = document.querySelectorAll('.theme-option');
 
-    themeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      themePanel.classList.toggle('active');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!themePanel.contains(e.target) && !themeBtn.contains(e.target)) {
-        themePanel.classList.remove('active');
-      }
-    });
-
-    themeOptions.forEach(option => {
-      option.addEventListener('click', () => {
-        const theme = option.getAttribute('data-theme-val');
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('guhan-theme', theme);
-        themePanel.classList.remove('active');
+    if (themeBtn && themePanel) {
+      themeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themePanel.classList.toggle('active');
       });
-    });
+
+      document.addEventListener('click', (e) => {
+        if (!themePanel.contains(e.target) && !themeBtn.contains(e.target)) {
+          themePanel.classList.remove('active');
+        }
+      });
+    }
+
+    if (themeOptions && themeOptions.length) {
+      themeOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const theme = option.getAttribute('data-theme-val');
+          document.documentElement.setAttribute('data-theme', theme);
+          localStorage.setItem('guhan-theme', theme);
+          if (themePanel) themePanel.classList.remove('active');
+        });
+      });
+    }
 
     // Load saved theme
-    const savedTheme = localStorage.getItem('guhan-theme');
-    if (savedTheme) {
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else {
-      // Default to the new light-tech theme if no theme saved
+    try {
+      const savedTheme = localStorage.getItem('guhan-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light-tech');
+      }
+    } catch (err) {
       document.documentElement.setAttribute('data-theme', 'light-tech');
     }
 
