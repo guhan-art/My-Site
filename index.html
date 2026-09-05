@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>S Guhan Raj | Portfolio</title>
-  <link rel="icon" type="image/jpeg" href="My PHOTO.jpg">
-  <link rel="apple-touch-icon" href="My PHOTO.jpg">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Personal portfolio of S Guhan Raj - Computer Science Engineer, Web Developer, and Tech Enthusiast. Discover education milestones, technical skills, projects, and certifications in an immersive spatial interface.">
   
@@ -455,16 +455,6 @@
     nav .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-    nav .nav-logo {
-      width: 32px;
-      height: 32px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 1.5px solid var(--primary);
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
       flex-shrink: 0;
     }
     nav h1 {
@@ -652,38 +642,12 @@
 
     /* ---------- About Section ---------- */
     .about-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-      max-width: 1100px;
+      max-width: 860px;
       margin: 0 auto;
-    }
-    .about-photo-panel {
-      position: relative;
-      width: 280px;
-      height: 360px;
-      border-radius: 20px;
-      border: 1px solid var(--glass-border);
-      overflow: hidden;
-      box-shadow: var(--glass-shadow);
-      background: var(--glass-bg);
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .about-photo-panel:hover {
-      border-color: rgba(255,255,255,0.18);
-    }
-    .about-photo-panel img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: filter 0.5s;
     }
     .about-text-panel {
-      flex: 1;
-      max-width: 620px;
-      min-width: 300px;
+      width: 100%;
     }
     .spatial-card {
       background: var(--glass-bg);
@@ -1564,8 +1528,6 @@
         display: block;
       }
       #home h2 { font-size: 2.8rem; }
-      .about-container { gap: 40px; }
-      .about-photo-panel { width: 240px; height: 310px; }
       .timeline::after { left: 30px; }
       .timeline-item {
         width: 100%;
@@ -1584,7 +1546,6 @@
       section { padding: 90px 5% 50px; }
       #home h2 { font-size: 2.2rem; }
       .typewriter-container { font-size: 1.15rem; height: 50px; }
-      .about-photo-panel { width: 190px; height: 250px; margin: 0 auto; }
       .skills-grid, .projects-container, .contact-grid { grid-template-columns: 1fr; }
       .hero-btns { gap: 12px; }
       .glass-btn { padding: 10px 22px; width: 100%; justify-content: center; }
@@ -1648,7 +1609,6 @@
   <!-- Navigation header -->
   <nav>
     <div class="logo">
-      <img src="My PHOTO.jpg" alt="S Guhan Raj" class="nav-logo">
       <h1>S Guhan Raj</h1>
     </div>
     <ul class="nav-links">
@@ -1685,12 +1645,9 @@
 
   <!-- ---------- About Section ---------- -->
   <section id="about">
+    <h2 class="section-title">About Me</h2>
     <div class="about-container">
-      <div class="about-photo-panel tilt-card">
-        <img src="My PHOTO.jpg" alt="S Guhan Raj" class="about-photo">
-      </div>
       <div class="about-text-panel">
-        <h2 class="section-title">About Me</h2>
         <div class="spatial-card">
           <p class="dossier-intro">
             <span class="cyber-accent">Summary //</span><br>
@@ -2190,7 +2147,7 @@
 
     // Dynamic target-lock on interactive elements
     function applyTechCursorInteractions() {
-      const interactives = document.querySelectorAll('a, button, .project-card, nav, .nav-logo, .hero-badge, .cert-marquee-card, .theme-option, .theme-btn');
+      const interactives = document.querySelectorAll('a, button, .project-card, nav, .hero-badge, .cert-marquee-card, .theme-option, .theme-btn');
       interactives.forEach(elem => {
         elem.addEventListener('mouseenter', () => {
           isHovering = true;
