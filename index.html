@@ -17,22 +17,109 @@
   
   <style>
     /* ---------- Core Themes & Variables ---------- */
-    :root {
-      --bg-dark: #070913;
-      --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-bg-hover: rgba(255, 255, 255, 0.06);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-border-hover: rgba(255, 255, 255, 0.18);
+    :root, [data-theme="cyber"] {
+      --bg-dark: #0a0a1a;
+      --bg-spatial: #08091a;
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-bg-hover: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-border-hover: rgba(255, 255, 255, 0.22);
       --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      --primary: #93c5fd; /* Soft Ice Blue */
-      --secondary: #6366f1; /* Premium Indigo */
-      --tertiary: #34d399; /* Clean Emerald */
-      --text-main: #f3f4f6; /* Frosted White */
-      --text-muted: #9ca3af; /* Light Gray */
+      --primary: #00f0ff;
+      --secondary: #bf5af2;
+      --tertiary: #30d158;
+      --accent-warm: #ff375f;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1a6;
       --font-header: 'Outfit', sans-serif;
       --font-body: 'Inter', sans-serif;
-      --glow-blue: 0 0 25px rgba(96, 165, 250, 0.35);
-      --glow-indigo: 0 0 25px rgba(99, 102, 241, 0.35);
+      --particle-r: 0; --particle-g: 240; --particle-b: 255;
+      --grid-dot: rgba(0, 240, 255, 0.03);
+    }
+    [data-theme="light-tech"] {
+      --bg-dark: #f8fafc;
+      --bg-spatial: #f1f5f9;
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-bg-hover: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(0, 0, 0, 0.05);
+      --glass-border-hover: rgba(0, 0, 0, 0.15);
+      --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      --primary: #2563eb;
+      --secondary: #4f46e5;
+      --tertiary: #059669;
+      --accent-warm: #db2777;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --particle-r: 37; --particle-g: 99; --particle-b: 235;
+      --grid-dot: rgba(0, 0, 0, 0.04);
+    }
+    [data-theme="matrix"] {
+      --bg-dark: #050a05;
+      --bg-spatial: #040804;
+      --glass-bg: rgba(0, 255, 65, 0.02);
+      --glass-bg-hover: rgba(0, 255, 65, 0.05);
+      --glass-border: rgba(0, 255, 65, 0.15);
+      --glass-border-hover: rgba(0, 255, 65, 0.3);
+      --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(0, 255, 65, 0.1);
+      --primary: #00ff41;
+      --secondary: #00cc33;
+      --tertiary: #66ff66;
+      --accent-warm: #33ff77;
+      --text-main: #e0ffe0;
+      --text-muted: #77bb77;
+      --particle-r: 0; --particle-g: 255; --particle-b: 65;
+      --grid-dot: rgba(0, 255, 65, 0.03);
+    }
+    [data-theme="ocean"] {
+      --bg-dark: #040d1a;
+      --bg-spatial: #030b15;
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-bg-hover: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-border-hover: rgba(255, 255, 255, 0.22);
+      --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      --primary: #38bdf8;
+      --secondary: #0ea5e9;
+      --tertiary: #22d3ee;
+      --accent-warm: #67e8f9;
+      --text-main: #f0f9ff;
+      --text-muted: #7dd3fc;
+      --particle-r: 56; --particle-g: 189; --particle-b: 248;
+      --grid-dot: rgba(56, 189, 248, 0.025);
+    }
+    [data-theme="sunset"] {
+      --bg-dark: #1a0a0a;
+      --bg-spatial: #150808;
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-bg-hover: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-border-hover: rgba(255, 255, 255, 0.22);
+      --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      --primary: #fb923c;
+      --secondary: #f43f5e;
+      --tertiary: #fbbf24;
+      --accent-warm: #e11d48;
+      --text-main: #fff7ed;
+      --text-muted: #fdba74;
+      --particle-r: 251; --particle-g: 146; --particle-b: 60;
+      --grid-dot: rgba(251, 146, 60, 0.025);
+    }
+    [data-theme="aurora"] {
+      --bg-dark: #070913;
+      --bg-spatial: #08090f;
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-bg-hover: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-border-hover: rgba(255, 255, 255, 0.22);
+      --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      --primary: #93c5fd;
+      --secondary: #6366f1;
+      --tertiary: #34d399;
+      --accent-warm: #f472b6;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --particle-r: 147; --particle-g: 197; --particle-b: 253;
+      --grid-dot: rgba(255, 255, 255, 0.015);
     }
 
     /* ---------- Base Styles ---------- */
@@ -71,20 +158,37 @@
       background: var(--secondary);
     }
 
-    /* ---------- Ambient Spatial Background ---------- */
-    .spatial-bg {
+    /* Dynamic Tech Background */
+    .tech-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: -2;
+      z-index: -1;
+      background: var(--bg-spatial);
       overflow: hidden;
-      background: #08090f;
+      transition: background 0.5s ease;
     }
-
-    /* Particle constellation canvas */
-    #particle-canvas {
+    .tech-grid {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        linear-gradient(var(--grid-dot) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-dot) 1px, transparent 1px);
+      background-size: 50px 50px;
+      transform: perspective(600px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+      animation: gridMove 15s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes gridMove {
+      0% { transform: perspective(600px) rotateX(60deg) translateY(0) translateZ(-200px); }
+      100% { transform: perspective(600px) rotateX(60deg) translateY(50px) translateZ(-200px); }
+    }
+    #tech-canvas {
       position: absolute;
       top: 0;
       left: 0;
@@ -92,206 +196,6 @@
       height: 100%;
       z-index: 1;
       pointer-events: none;
-    }
-
-    .bokeh-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(130px);
-      opacity: 0.45;
-      mix-blend-mode: screen;
-      pointer-events: none;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .orb-1 {
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, rgba(0,0,0,0) 70%);
-      top: -15%;
-      left: -10%;
-      animation: floatOrb1 25s infinite alternate ease-in-out;
-    }
-    .orb-2 {
-      width: 65vw;
-      height: 65vw;
-      background: radial-gradient(circle, rgba(147, 197, 253, 0.45) 0%, rgba(0,0,0,0) 70%);
-      bottom: -15%;
-      right: -10%;
-      animation: floatOrb2 30s infinite alternate ease-in-out;
-    }
-    .orb-3 {
-      width: 50vw;
-      height: 50vw;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(0,0,0,0) 70%);
-      top: 35%;
-      left: 40%;
-      animation: floatOrb3 28s infinite alternate ease-in-out;
-    }
-    .orb-4 {
-      width: 45vw;
-      height: 45vw;
-      background: radial-gradient(circle, rgba(52, 211, 153, 0.3) 0%, rgba(0,0,0,0) 70%);
-      top: 60%;
-      left: -5%;
-      animation: floatOrb4 32s infinite alternate ease-in-out;
-    }
-    .orb-5 {
-      width: 55vw;
-      height: 55vw;
-      background: radial-gradient(circle, rgba(244, 114, 182, 0.3) 0%, rgba(0,0,0,0) 70%);
-      top: -10%;
-      right: -15%;
-      animation: floatOrb5 35s infinite alternate ease-in-out;
-    }
-    .orb-6 {
-      width: 40vw;
-      height: 40vw;
-      background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, rgba(0,0,0,0) 70%);
-      bottom: 10%;
-      left: 35%;
-      animation: floatOrb6 22s infinite alternate ease-in-out;
-    }
-
-    /* Floating geometric shapes */
-    .floating-shape {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0;
-      animation-fill-mode: forwards;
-    }
-    .shape-ring {
-      border: 1px solid rgba(147, 197, 253, 0.08);
-      border-radius: 50%;
-      animation: floatShape 20s infinite ease-in-out, fadeInShape 2s ease forwards;
-    }
-    .shape-diamond {
-      border: 1px solid rgba(99, 102, 241, 0.06);
-      transform: rotate(45deg);
-      animation: floatShapeSlow 25s infinite ease-in-out, spinShape 40s infinite linear, fadeInShape 2s ease forwards;
-    }
-    .shape-cross {
-      width: 1px !important;
-      height: 20px !important;
-      background: rgba(147, 197, 253, 0.06);
-      animation: floatShapeAlt 22s infinite ease-in-out, fadeInShape 2s ease forwards;
-    }
-    .shape-cross::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 20px;
-      height: 1px;
-      background: rgba(147, 197, 253, 0.06);
-    }
-
-    /* Aurora wave glow */
-    .aurora-wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 200%;
-      height: 300px;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(99, 102, 241, 0.04) 15%,
-        rgba(147, 197, 253, 0.06) 30%,
-        rgba(168, 85, 247, 0.04) 50%,
-        rgba(52, 211, 153, 0.03) 70%,
-        rgba(99, 102, 241, 0.04) 85%,
-        transparent 100%
-      );
-      filter: blur(40px);
-      animation: auroraSlide 18s infinite linear;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .aurora-wave-2 {
-      position: absolute;
-      top: 0;
-      left: -50%;
-      width: 200%;
-      height: 250px;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(147, 197, 253, 0.03) 20%,
-        rgba(99, 102, 241, 0.05) 40%,
-        rgba(52, 211, 153, 0.03) 60%,
-        rgba(168, 85, 247, 0.04) 80%,
-        transparent 100%
-      );
-      filter: blur(50px);
-      animation: auroraSlide 24s infinite linear reverse;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .grid-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.015) 1.5px, transparent 1.5px);
-      background-size: 50px 50px;
-      opacity: 0.8;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    @keyframes floatOrb1 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(8%, 8%) scale(1.1); }
-    }
-    @keyframes floatOrb2 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-8%, -8%) scale(1.05); }
-    }
-    @keyframes floatOrb3 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(5%, -10%) scale(1.15); }
-    }
-    @keyframes floatOrb4 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(10%, -6%) scale(1.08); }
-    }
-    @keyframes floatOrb5 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-12%, 8%) scale(1.12); }
-    }
-    @keyframes floatOrb6 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(6%, -12%) scale(1.06); }
-    }
-    @keyframes floatShape {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      25% { transform: translateY(-30px) translateX(15px); }
-      50% { transform: translateY(-10px) translateX(-20px); }
-      75% { transform: translateY(-40px) translateX(10px); }
-    }
-    @keyframes floatShapeSlow {
-      0%, 100% { transform: rotate(45deg) translateY(0); }
-      50% { transform: rotate(45deg) translateY(-35px); }
-    }
-    @keyframes floatShapeAlt {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      33% { transform: translateY(-25px) translateX(20px); }
-      66% { transform: translateY(10px) translateX(-15px); }
-    }
-    @keyframes spinShape {
-      0% { transform: rotate(45deg); }
-      100% { transform: rotate(405deg); }
-    }
-    @keyframes fadeInShape {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    @keyframes auroraSlide {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
     }
 
     /* ---------- Scroll Progress ---------- */
@@ -1495,32 +1399,10 @@
   <!-- Scroll progress bar -->
   <div id="scroll-progress"></div>
 
-  <!-- Ambient Spatial Background -->
-  <div class="spatial-bg">
-    <canvas id="particle-canvas"></canvas>
-    <div class="bokeh-orb orb-1"></div>
-    <div class="bokeh-orb orb-2"></div>
-    <div class="bokeh-orb orb-3"></div>
-    <div class="bokeh-orb orb-4"></div>
-    <div class="bokeh-orb orb-5"></div>
-    <div class="bokeh-orb orb-6"></div>
-    
-    <!-- Floating geometric shapes -->
-    <div class="floating-shape shape-ring" style="width:80px;height:80px;top:12%;left:8%;animation-delay:0s;"></div>
-    <div class="floating-shape shape-ring" style="width:50px;height:50px;top:65%;right:12%;animation-delay:3s;"></div>
-    <div class="floating-shape shape-ring" style="width:120px;height:120px;bottom:20%;left:25%;animation-delay:7s;"></div>
-    <div class="floating-shape shape-diamond" style="width:30px;height:30px;top:25%;right:20%;animation-delay:2s;"></div>
-    <div class="floating-shape shape-diamond" style="width:22px;height:22px;top:70%;left:15%;animation-delay:5s;"></div>
-    <div class="floating-shape shape-diamond" style="width:18px;height:18px;top:40%;right:35%;animation-delay:9s;"></div>
-    <div class="floating-shape shape-cross" style="top:30%;left:75%;animation-delay:1s;"></div>
-    <div class="floating-shape shape-cross" style="top:80%;left:50%;animation-delay:4s;"></div>
-    <div class="floating-shape shape-cross" style="top:15%;left:45%;animation-delay:8s;"></div>
-    
-    <!-- Aurora wave -->
-    <div class="aurora-wave"></div>
-    <div class="aurora-wave-2"></div>
-    
-    <div class="grid-overlay"></div>
+  <!-- Dynamic Tech Background -->
+  <div class="tech-bg">
+    <canvas id="tech-canvas"></canvas>
+    <div class="tech-grid"></div>
   </div>
 
   <!-- Custom Spatial Cursor -->
@@ -1856,6 +1738,40 @@
 
   <!-- ---------- Immersive Spatial Scripts ---------- -->
   <script>
+    // ---------- Theme Switcher ----------
+    const themeBtn = document.getElementById('theme-btn');
+    const themePanel = document.getElementById('theme-panel');
+    const themeOptions = document.querySelectorAll('.theme-option');
+
+    themeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      themePanel.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!themePanel.contains(e.target) && !themeBtn.contains(e.target)) {
+        themePanel.classList.remove('active');
+      }
+    });
+
+    themeOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const theme = option.getAttribute('data-theme-val');
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('guhan-theme', theme);
+        themePanel.classList.remove('active');
+      });
+    });
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('guhan-theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      // Default to the new light-tech theme if no theme saved
+      document.documentElement.setAttribute('data-theme', 'light-tech');
+    }
+
     // Section reveal on scroll (Intersection Observer)
     const sections = document.querySelectorAll('section');
     const revealSection = (entries, observer) => {
@@ -2018,42 +1934,15 @@
       applyCursorHoverEffects();
     });
 
-    // ---------- Interactive Bokeh Parallax & Slow Drift ----------
-    const orbs = document.querySelectorAll('.bokeh-orb');
-    const floatingShapes = document.querySelectorAll('.floating-shape');
-    document.addEventListener('mousemove', (e) => {
-      const mouseX = e.clientX / window.innerWidth - 0.5;
-      const mouseY = e.clientY / window.innerHeight - 0.5;
-      
-      orbs.forEach((orb, index) => {
-        const depth = (index + 1) * 20;
-        const xShift = mouseX * depth;
-        const yShift = mouseY * depth;
-        orb.style.transform = `translate(${xShift}px, ${yShift}px)`;
-      });
-
-      // Floating shapes parallax (subtle, inverted direction for depth)
-      floatingShapes.forEach((shape, index) => {
-        const depth = (index + 1) * 8;
-        const xShift = mouseX * -depth;
-        const yShift = mouseY * -depth;
-        shape.style.marginLeft = `${xShift}px`;
-        shape.style.marginTop = `${yShift}px`;
-      });
-    });
-
-    // ---------- Particle Constellation System ----------
+    // ---------- Tech Circuit Background Canvas ----------
     (function() {
-      const canvas = document.getElementById('particle-canvas');
+      const canvas = document.getElementById('tech-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
       let w, h;
-      let mouseCanvasX = -9999, mouseCanvasY = -9999;
-      const PARTICLE_COUNT = 70;
-      const CONNECTION_DIST = 140;
-      const MOUSE_REPEL_DIST = 120;
-      const MOUSE_REPEL_FORCE = 0.8;
+      let mouseX = -9999, mouseY = -9999;
+      const PARTICLE_COUNT = 60;
       let particles = [];
 
       function resize() {
@@ -2064,125 +1953,104 @@
       window.addEventListener('resize', resize);
 
       document.addEventListener('mousemove', (e) => {
-        mouseCanvasX = e.clientX;
-        mouseCanvasY = e.clientY;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
       });
       document.addEventListener('mouseleave', () => {
-        mouseCanvasX = -9999;
-        mouseCanvasY = -9999;
+        mouseX = -9999;
+        mouseY = -9999;
       });
 
-      class Particle {
+      function getCSSVar(name) {
+        return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      }
+
+      class Node {
         constructor() {
-          this.reset();
-        }
-        reset() {
           this.x = Math.random() * w;
           this.y = Math.random() * h;
-          this.vx = (Math.random() - 0.5) * 0.35;
-          this.vy = (Math.random() - 0.5) * 0.35;
-          this.radius = Math.random() * 1.8 + 0.5;
-          this.alpha = Math.random() * 0.4 + 0.15;
-          // Color variety: blue, indigo, purple, teal
-          const colors = [
-            [147, 197, 253],
-            [99, 102, 241],
-            [168, 85, 247],
-            [52, 211, 153]
-          ];
-          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.vx = (Math.random() - 0.5) * 0.8;
+          this.vy = (Math.random() - 0.5) * 0.8;
+          this.radius = Math.random() * 2 + 1;
         }
         update() {
-          // Mouse repulsion
-          const dx = this.x - mouseCanvasX;
-          const dy = this.y - mouseCanvasY;
+          // Subtle mouse attraction
+          const dx = mouseX - this.x;
+          const dy = mouseY - this.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < MOUSE_REPEL_DIST && dist > 0) {
-            const force = (MOUSE_REPEL_DIST - dist) / MOUSE_REPEL_DIST * MOUSE_REPEL_FORCE;
-            this.vx += (dx / dist) * force;
-            this.vy += (dy / dist) * force;
+          if (dist < 200 && dist > 0) {
+            this.x += (dx / dist) * 0.5;
+            this.y += (dy / dist) * 0.5;
           }
-
-          // Damping
-          this.vx *= 0.995;
-          this.vy *= 0.995;
 
           this.x += this.vx;
           this.y += this.vy;
 
-          // Wrap edges
-          if (this.x < -10) this.x = w + 10;
-          if (this.x > w + 10) this.x = -10;
-          if (this.y < -10) this.y = h + 10;
-          if (this.y > h + 10) this.y = -10;
+          if (this.x < -50) this.x = w + 50;
+          if (this.x > w + 50) this.x = -50;
+          if (this.y < -50) this.y = h + 50;
+          if (this.y > h + 50) this.y = -50;
         }
-        draw() {
+        draw(r, g, b) {
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.alpha})`;
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.8)`;
           ctx.fill();
-
-          // Subtle glow
+          
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.radius * 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.alpha * 0.15})`;
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.15)`;
           ctx.fill();
         }
       }
 
-      // Initialize particles
       for (let i = 0; i < PARTICLE_COUNT; i++) {
-        particles.push(new Particle());
+        particles.push(new Node());
       }
 
-      function drawConnections() {
+      function drawCircuitLines(r, g, b) {
+        ctx.lineWidth = 1;
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
             const dy = particles[i].y - particles[j].y;
             const dist = Math.sqrt(dx * dx + dy * dy);
 
-            if (dist < CONNECTION_DIST) {
-              const opacity = (1 - dist / CONNECTION_DIST) * 0.15;
+            if (dist < 160) {
+              const opacity = (1 - dist / 160) * 0.5;
+              ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);
+              
+              // Circuit style: move horizontally then vertically
+              if (Math.abs(dx) > Math.abs(dy)) {
+                ctx.lineTo(particles[j].x, particles[i].y);
+              } else {
+                ctx.lineTo(particles[i].x, particles[j].y);
+              }
               ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = `rgba(147, 197, 253, ${opacity})`;
-              ctx.lineWidth = 0.5;
               ctx.stroke();
             }
-          }
-        }
-
-        // Draw lines from particles close to mouse
-        for (let i = 0; i < particles.length; i++) {
-          const dx = particles[i].x - mouseCanvasX;
-          const dy = particles[i].y - mouseCanvasY;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST * 1.5) {
-            const opacity = (1 - dist / (CONNECTION_DIST * 1.5)) * 0.25;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(mouseCanvasX, mouseCanvasY);
-            ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
           }
         }
       }
 
       function animate() {
         ctx.clearRect(0, 0, w, h);
+        
+        // Dynamic theme colors
+        const r = getCSSVar('--particle-r') || 37;
+        const g = getCSSVar('--particle-g') || 99;
+        const b = getCSSVar('--particle-b') || 235;
 
         particles.forEach(p => {
           p.update();
-          p.draw();
+          p.draw(r, g, b);
         });
 
-        drawConnections();
+        drawCircuitLines(r, g, b);
         requestAnimationFrame(animate);
       }
-
       animate();
     })();
 
