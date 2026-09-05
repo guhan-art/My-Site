@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>S Guhan Raj | Portfolio</title>
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/jpeg" href="My PHOTO.jpg">
+  <link rel="apple-touch-icon" href="My PHOTO.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Personal portfolio of S Guhan Raj - Computer Science Engineer, Web Developer, and Tech Enthusiast. Discover education milestones, technical skills, projects, and certifications in an immersive spatial interface.">
   
@@ -327,9 +328,12 @@
       flex-shrink: 0;
     }
     nav .nav-logo {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1.5px solid var(--primary);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
       flex-shrink: 0;
     }
     nav h1 {
@@ -390,53 +394,55 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 160px;
+      min-height: 100vh;
+      padding: 120px 10% 80px;
     }
-    .avatar-wrapper {
-      position: relative;
-      margin-bottom: 30px;
-    }
-    .avatar-glow {
-      position: absolute;
-      top: -10%; left: -10%;
-      width: 120%; height: 120%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(10px);
-      z-index: -1;
-      pointer-events: none;
-    }
-    .avatar-container {
-      position: relative;
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      display: flex;
-      justify-content: center;
+    .hero-badge {
+      display: inline-flex;
       align-items: center;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      gap: 10px;
+      padding: 8px 22px;
+      border-radius: 30px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--primary);
+      font-family: var(--font-header);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--glass-shadow);
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
-    .avatar-container:hover {
-      transform: scale(1.03);
+    .hero-badge:hover {
+      transform: translateY(-2px);
+      border-color: var(--glass-border-hover);
     }
-    .cyber-avatar {
-      width: 168px;
-      height: 168px;
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid rgba(15, 17, 26, 0.85);
-      background: var(--bg-dark);
+      background: var(--tertiary);
+      box-shadow: 0 0 10px var(--tertiary);
+      display: inline-block;
+      animation: pulseDot 2s infinite ease-in-out;
+    }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.5; }
     }
     #home h2 {
       font-family: var(--font-header);
-      font-size: 3.8rem;
-      font-weight: 800;
+      font-size: clamp(3.2rem, 8vw, 5.2rem);
+      font-weight: 900;
       color: var(--text-main);
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+      line-height: 1.08;
+      text-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
     .typewriter-container {
       font-family: var(--font-body);
@@ -1500,7 +1506,7 @@
   <!-- Navigation header -->
   <nav>
     <div class="logo">
-      <img src="logo.png" alt="S Guhan Raj Logo" class="nav-logo" onerror="this.style.display='none'">
+      <img src="My PHOTO.jpg" alt="S Guhan Raj" class="nav-logo">
       <h1>S Guhan Raj</h1>
     </div>
     <ul class="nav-links">
@@ -1521,11 +1527,9 @@
 
   <!-- ---------- Hero Section ---------- -->
   <section id="home">
-    <div class="avatar-wrapper">
-      <div class="avatar-glow"></div>
-      <div class="avatar-container tilt-card">
-        <img src="My PHOTO.jpg" alt="S Guhan Raj" class="cyber-avatar" onerror="this.src='logo.png'">
-      </div>
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span>Computer Science Engineer</span>
     </div>
     <h2>S GUHAN RAJ</h2>
     <div class="typewriter-container">
@@ -1541,7 +1545,7 @@
   <section id="about">
     <div class="about-container">
       <div class="about-photo-panel tilt-card">
-        <img src="My PHOTO.jpg" alt="Profile Picture" class="about-photo" onerror="this.src='logo.png'">
+        <img src="My PHOTO.jpg" alt="S Guhan Raj" class="about-photo">
       </div>
       <div class="about-text-panel">
         <h2 class="section-title">About Me</h2>
@@ -2009,7 +2013,7 @@
     
     // Add spatial hover effects to interactive elements
     function applyCursorHoverEffects() {
-      const interactives = document.querySelectorAll('a, button, .cert-badge, .project-card, nav, .avatar-container, .cert-marquee-card');
+      const interactives = document.querySelectorAll('a, button, .cert-badge, .project-card, nav, .nav-logo, .hero-badge, .cert-marquee-card');
       interactives.forEach(elem => {
         // Remove existing listeners first to avoid duplication
         elem.removeEventListener('mouseenter', addCursorClass);
