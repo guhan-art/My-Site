@@ -211,54 +211,185 @@
       transition: width 0.1s;
     }
 
-    /* ---------- Custom Spatial Cursor ---------- */
-    #spatial-cursor {
+    /* ---------- Futuristic Cyber HUD Cursor ---------- */
+    @media (min-width: 901px) {
+      body, a, button, input, select, textarea, .theme-btn, .project-card, .cert-marquee-card {
+        cursor: none !important;
+      }
+    }
+
+    #tech-cursor-dot {
       position: fixed;
       top: 0;
       left: 0;
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background-color: rgba(255, 255, 255, 0.02);
-      border-radius: 50%;
+      width: 8px;
+      height: 8px;
       pointer-events: none;
       transform: translate(-50%, -50%);
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, border-color 0.3s;
-      z-index: 9999;
-      display: block;
+      z-index: 10002;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
-    #spatial-cursor-dot {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 6px;
-      height: 6px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 10000;
-      display: block;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    }
-    /* Hover class applied to body when interactive element is hovered */
-    .spatial-hover #spatial-cursor {
-      width: 55px;
-      height: 55px;
-      border-color: rgba(255, 255, 255, 0.6);
-      background-color: rgba(255, 255, 255, 0.08);
-    }
-    .spatial-hover #spatial-cursor-dot {
+    #tech-cursor-dot .dot-core {
+      width: 5px;
+      height: 5px;
       background-color: var(--primary);
-      box-shadow: var(--glow-blue);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary), 0 0 4px #fff;
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+    #tech-cursor-dot::before,
+    #tech-cursor-dot::after {
+      content: '';
+      position: absolute;
+      background: var(--primary);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    #tech-cursor-dot::before {
+      width: 14px;
+      height: 1px;
+    }
+    #tech-cursor-dot::after {
+      width: 1px;
+      height: 14px;
+    }
+
+    #tech-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 38px;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 10001;
+      opacity: 0;
+      transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+                  opacity 0.25s ease,
+                  transform 0.15s ease;
+    }
+    .reticle-box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reticle-box .corner {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-color: var(--primary);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reticle-box .corner.tl {
+      top: 0;
+      left: 0;
+      border-top: 2px solid;
+      border-left: 2px solid;
+    }
+    .reticle-box .corner.tr {
+      top: 0;
+      right: 0;
+      border-top: 2px solid;
+      border-right: 2px solid;
+    }
+    .reticle-box .corner.bl {
+      bottom: 0;
+      left: 0;
+      border-bottom: 2px solid;
+      border-left: 2px solid;
+    }
+    .reticle-box .corner.br {
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid;
+      border-right: 2px solid;
+    }
+    .reticle-radar {
+      position: absolute;
+      inset: 4px;
+      border: 1px dashed var(--primary);
+      border-radius: 50%;
+      opacity: 0.35;
+      animation: rotateRadar 14s linear infinite;
+    }
+    @keyframes rotateRadar {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .cursor-telemetry {
+      position: absolute;
+      left: 100%;
+      top: -6px;
+      margin-left: 10px;
+      font-family: monospace, 'Courier New', Courier;
+      font-size: 8px;
+      letter-spacing: 1px;
+      color: var(--primary);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0.8;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.25s ease;
+    }
+
+    /* Active hover targeting state */
+    body.tech-hover #tech-cursor {
+      width: 54px;
+      height: 54px;
+    }
+    body.tech-hover .reticle-box {
+      transform: rotate(45deg);
+    }
+    body.tech-hover .reticle-box .corner {
+      border-color: var(--accent-warm);
+      filter: drop-shadow(0 0 6px var(--accent-warm));
+    }
+    body.tech-hover .reticle-radar {
+      opacity: 0.65;
+      border-color: var(--accent-warm);
+      animation: rotateRadar 5s linear infinite;
+    }
+    body.tech-hover #tech-cursor-dot .dot-core {
+      transform: scale(1.6);
+      background-color: var(--accent-warm);
+      box-shadow: 0 0 14px var(--accent-warm), 0 0 4px #fff;
+    }
+    body.tech-hover #tech-cursor-dot::before,
+    body.tech-hover #tech-cursor-dot::after {
+      background: var(--accent-warm);
+    }
+    body.tech-hover .cursor-telemetry {
+      color: var(--accent-warm);
+      border-color: var(--accent-warm);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    /* Click / Mousedown state */
+    body.tech-active #tech-cursor {
+      transform: translate(-50%, -50%) scale(0.75);
+    }
+    body.tech-active #tech-cursor-dot .dot-core {
+      transform: scale(2.2);
     }
 
     /* Hide cursor for mobile devices */
     @media (max-width: 900px) {
-      #spatial-cursor, #spatial-cursor-dot {
+      #tech-cursor, #tech-cursor-dot {
         display: none !important;
       }
-      body {
+      body, a, button, input, select, textarea {
         cursor: auto !important;
       }
     }
@@ -1499,9 +1630,20 @@
     <div class="tech-grid"></div>
   </div>
 
-  <!-- Custom Spatial Cursor -->
-  <div id="spatial-cursor"></div>
-  <div id="spatial-cursor-dot"></div>
+  <!-- Futuristic Cyber HUD Cursor -->
+  <div id="tech-cursor">
+    <div class="reticle-box">
+      <span class="corner tl"></span>
+      <span class="corner tr"></span>
+      <span class="corner bl"></span>
+      <span class="corner br"></span>
+      <div class="reticle-radar"></div>
+    </div>
+    <div class="cursor-telemetry" id="cursor-telemetry">SYS // 00:00</div>
+  </div>
+  <div id="tech-cursor-dot">
+    <div class="dot-core"></div>
+  </div>
 
   <!-- Navigation header -->
   <nav>
@@ -1982,58 +2124,95 @@
       setTimeout(type, 800);
     });
 
-    // ---------- Custom Spatial Cursor & Hover Snap ----------
-    const cursor = document.getElementById('spatial-cursor');
-    const cursorDot = document.getElementById('spatial-cursor-dot');
+    // ---------- Futuristic Cyber HUD Cursor Controller ----------
+    const techCursor = document.getElementById('tech-cursor');
+    const techDot = document.getElementById('tech-cursor-dot');
+    const hudTelemetry = document.getElementById('cursor-telemetry');
     
-    let cursorX = 0, cursorY = 0;
-    let targetX = 0, targetY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
+    let curX = -200, curY = -200;
+    let targetX = -200, targetY = -200;
+    let isHovering = false;
+    let isCursorVisible = false;
+
+    window.addEventListener('mousemove', (e) => {
       targetX = e.clientX;
       targetY = e.clientY;
-      // Dot follows immediately
-      cursorDot.style.left = targetX + 'px';
-      cursorDot.style.top = targetY + 'px';
+
+      if (!isCursorVisible) {
+        isCursorVisible = true;
+        if (techCursor) techCursor.style.opacity = '1';
+        if (techDot) techDot.style.opacity = '1';
+        curX = targetX;
+        curY = targetY;
+      }
+
+      // Precision laser dot moves with zero lag
+      if (techDot) {
+        techDot.style.left = targetX + 'px';
+        techDot.style.top = targetY + 'px';
+      }
+
+      // Dynamic telemetry readout when not locked onto a target
+      if (!isHovering && hudTelemetry) {
+        hudTelemetry.textContent = `LOC // ${Math.round(targetX)}:${Math.round(targetY)}`;
+      }
     });
-    
-    // Smooth lerp follow for the main soft cursor ring
-    function updateCursor() {
-      const dx = targetX - cursorX;
-      const dy = targetY - cursorY;
-      cursorX += dx * 0.16;
-      cursorY += dy * 0.16;
+
+    document.addEventListener('mouseleave', () => {
+      isCursorVisible = false;
+      if (techCursor) techCursor.style.opacity = '0';
+      if (techDot) techDot.style.opacity = '0';
+    });
+
+    // Physics spring/lerp follow for outer HUD targeting reticle
+    function renderTechCursor() {
+      const dx = targetX - curX;
+      const dy = targetY - curY;
+      curX += dx * 0.18;
+      curY += dy * 0.18;
       
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
+      if (techCursor) {
+        techCursor.style.left = curX + 'px';
+        techCursor.style.top = curY + 'px';
+      }
       
-      requestAnimationFrame(updateCursor);
+      requestAnimationFrame(renderTechCursor);
     }
-    requestAnimationFrame(updateCursor);
-    
-    // Add spatial hover effects to interactive elements
-    function applyCursorHoverEffects() {
-      const interactives = document.querySelectorAll('a, button, .cert-badge, .project-card, nav, .nav-logo, .hero-badge, .cert-marquee-card');
+    requestAnimationFrame(renderTechCursor);
+
+    // Mousedown / Mouseup click feedback (tactile laser snap)
+    window.addEventListener('mousedown', () => {
+      document.body.classList.add('tech-active');
+    });
+    window.addEventListener('mouseup', () => {
+      document.body.classList.remove('tech-active');
+    });
+
+    // Dynamic target-lock on interactive elements
+    function applyTechCursorInteractions() {
+      const interactives = document.querySelectorAll('a, button, .project-card, nav, .nav-logo, .hero-badge, .cert-marquee-card, .theme-option, .theme-btn');
       interactives.forEach(elem => {
-        // Remove existing listeners first to avoid duplication
-        elem.removeEventListener('mouseenter', addCursorClass);
-        elem.removeEventListener('mouseleave', removeCursorClass);
-        
-        elem.addEventListener('mouseenter', addCursorClass);
-        elem.addEventListener('mouseleave', removeCursorClass);
+        elem.addEventListener('mouseenter', () => {
+          isHovering = true;
+          document.body.classList.add('tech-hover');
+          if (hudTelemetry) {
+            const rawText = elem.getAttribute('title') || elem.getAttribute('aria-label') || elem.innerText || 'TARGET';
+            const cleanText = rawText.replace(/\s+/g, ' ').trim().slice(0, 10);
+            hudTelemetry.textContent = `LOCK // ${cleanText.toUpperCase() || 'ACTIVE'}`;
+          }
+        });
+        elem.addEventListener('mouseleave', () => {
+          isHovering = false;
+          document.body.classList.remove('tech-hover');
+          if (hudTelemetry) {
+            hudTelemetry.textContent = `LOC // ${Math.round(targetX)}:${Math.round(targetY)}`;
+          }
+        });
       });
     }
 
-    function addCursorClass() {
-      document.body.classList.add('spatial-hover');
-    }
-
-    function removeCursorClass() {
-      document.body.classList.remove('spatial-hover');
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      applyCursorHoverEffects();
+      applyTechCursorInteractions();
     });
 
     // ---------- Tech Circuit Background Canvas ----------
